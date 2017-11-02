@@ -3,9 +3,12 @@
 ---
 
 // Imports
+
+@import "theme";
 @import "materialize";
 
-$icon_color: #ef6c00;
+$icon_color: $primary-color;
+$home-background: #e1e4e7;
 
 .debug {
   display: none
@@ -21,19 +24,24 @@ main {
   flex: 1 0 auto;
 }
 //MENU
-.menu-icon {
-    
-}
-/*
-Home page
-*/
-.home-item i {
-    color: $icon_color !important;
-}
 
-
-.card-icon {
-  color: $icon_color !important;
+.menu-icon-1 {
+  color: $theme_icon1 !important;
+}
+.menu-icon-2 {
+  color: $theme_icon2 !important;
+}
+.menu-icon-3 {
+  color: $theme_icon3 !important;
+}
+.menu-icon-4 {
+  color: $theme_icon4 !important;
+}
+.menu-icon-5 {
+  color: $theme_icon5 !important;
+}
+.menu-icon-6 {
+  color: $theme_icon6 !important;
 }
 
 .nav-path-main {
@@ -43,13 +51,13 @@ Home page
 
 .nav-path {
   font-weight: 400 !important;
-  font-size: 1.5rem;
+  font-size: 1.5rem !important;
 }
 
 .nav-link {
-  padding: 0.8rem;
+  padding-left: 1rem;
   font-weight: 400 !important;
-  font-size: 1.3rem;
+  font-size: 1.4rem !important; 
 }
 
 .nav-side-item {
@@ -57,18 +65,117 @@ Home page
 }
 
 .nav-dropdown-content {
+
     @extend .dropdown-content;
     min-width: 13rem;
 }
+
+.nav-dropdown-content li>a {
+  color: $icon_color !important;
+}
+
 .nav-dropdown-head {
     border-bottom-width: 1px;
     border-bottom-color: $primary-color-light;
     border-bottom-style: solid;
 }
-// HOME
+
+/*
+Home page
+*/
+
+
+.home-section {
+  background-color: $home-background;
+}
+.home-section .row {
+  width: 85%;
+}
+
+.home-title {
+    color: white !important;
+    //font-family: 'Lora', serif;
+    font-weight: 500 !important;
+    font-size: 5rem !important;
+    text-shadow: 2px 2px 8px #000000;
+}
+.home-intro {
+  margin: 2rem;
+  color: white !important;
+  //background-color:#ffffff50;
+  text-shadow: 1px 1px 3px #000000;
+  font-size: 3rem;
+  font-weight: 400 !important;
+}
+
+.home-post-title {
+    color: $primary-color !important;
+    font-size: 2rem;
+}
+
+.featured-post {
+
+}
+
+.featured-post-title {
+    color: black;
+    font-size: 1.5rem;
+}
+.featured-post-date {
+  color: gray;
+  font-size: 1.3rem;
+}
+
+.home-card {
+    //background-color: $home-background;
+    @media #{$medium-and-up} {
+      // styles for medium screens and larger
+      text-align: center;
+    }
+    
+    margin-top: 20px;
+}
+
+.home-card-title {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-top: 5px;
+  margin-bottom: 0
+}
+
+.home-card-image {
+  @media #{$medium-and-down} {
+    display: none
+  }
+}
+
+.home-item {
+  margin: 1rem;
+  @extend .center;
+  //background-color: $home-background;
+}
+.home-item-small > * {
+  vertical-align: middle;
+}
+
+.home-item-desc {
+  margin: 0rem;
+  font-size: 1.3rem !important;
+  font-weight: 400 !important;
+}
+.home-item-title {
+  @extend .center;
+  margin: 0.5rem;
+  font-size: 2.0rem !important;
+  font-weight: 500 !important;
+  color: darken($icon_color, 10%) !important;
+}
+
+
+
 .parallax-container {
   @media #{$small-and-down} {
-    height: 200px;
+    height: 400px;
   }
   @media #{$medium-and-up} {
     // styles for medium screens and larger
@@ -82,42 +189,12 @@ Home page
     // styles for extra large screens and up
     height: 600px;
   }
-  
-}
-
-.home-card-image {
-  @media #{$medium-and-down} {
-    display: none
-  }
 }
 
 
 
-.home-title {
-    @extend .blue-grey-text;
-    font-weight: 500 !important;
-    font-style: italic;
-}
-
-.home-card {
-  
-}
 
 
-.index-title {
-  @extend .center, .blue-text;
-  font-size: 3.0rem;
-}
-.index-card {
-  @extend .center;
-  margin-top: 20px;
-}
-.index-card-title {
-  font-size: 1.7rem;
-  font-weight: 500;
-  margin-top: 5px;
-  margin-bottom: 0
-}
 .navigation {
   //@extend .blue-grey, .darken-3;  
 }
@@ -165,21 +242,47 @@ Home page
 .table-of-contents a {
   font-size: 1.3rem;
 }
+
+/*
+Markdown content
+*/
+
+$md-color: darken($primary-color, 5%);
+
 .md-content {
-    color: #494949
+    color: #353535
 }
 .md-content p {
     font-size: 1.2rem !important;
 }
 .md-content h1 {
     font-size: 2.5rem !important;
+    color: $md-color;
 }
 .md-content h2 {
     font-size: 2.1rem !important;
+    color: $md-color;
 }
 .md-content h3 {
     font-size: 1.7rem !important;
+    color: $md-color;
 }
+
+.md-content hr {
+    margin-top: 2rem;
+    margin-bottom: 4rem;
+    border-color: $md-color;
+    border-width: 1px; 
+    border-style: solid;
+    width: 60%;
+}
+
+.md-content th {
+  font-size: 1.3rem !important;
+  font-weight: 400;
+  color: $md-color;
+}
+
 .flow-text {
   font-size: 1.45rem;
 }

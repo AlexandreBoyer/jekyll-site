@@ -46,21 +46,23 @@
                     <i class="material-icons menu-icon left">
                         {{ icon }}
                     </i>
-                    {{ pages[0].title }}
+                    {{ pages[0].nav-title }}
                 </a>
-                {% for part in url %} {% if url.size > 1 and part == url.last %}
+                {% for part in url %} 
+                {% if url.size > 1 and part == url.last %}
                 <a class="breadcrumb nav-path">
                     {{ part | truncate: 35, '...' }}
                 </a>
                 {% else %}
                 <a class="breadcrumb nav-path" href={{ "/" | append: part | relative_url}}>
-                    {{ parent.title }}
+                    {{ parent.nav-title }}
                 </a>
-                {% endif %} {% endfor %}
+                {% endif %} 
+                {% endfor %}
                 <ul class="right hide-on-med-and-down">
                     {% for link in links %}
                     <li>
-                        <a href={{ link.url | relative_url }}>{{ link.title }}</a>
+                        <a class="nav-link" href={{ link.url | relative_url }}>{{ link.nav-title }}</a>
                     </li>
                     {% endfor %}
                 </ul>
@@ -82,7 +84,7 @@
                 <i class="material-icons small item-icon">
                     {{ pages[0].icon }}
                 </i>
-                {{ pages[0].title }}
+                {{ pages[0].nav-title }}
             </a>
         </li>      
         {% for link in links %}
@@ -91,7 +93,7 @@
                 <i class="material-icons small item-icon">
                     {{ link.icon }}
                 </i>
-                {{ link.title }}
+                {{ link.nav-title }}
             </a>
         </li>
         {% endfor %}
@@ -102,7 +104,7 @@
                 <i class="material-icons small item-icon">
                     {{ pages[0].icon }}
                 </i>
-                {{ pages[0].title }}
+                {{ pages[0].nav-title }}
             </a>
         </li>     
         {% for link in links %}
@@ -111,7 +113,7 @@
                 <i class="material-icons small item-icon">
                     {{ link.icon }}
                 </i>
-                {{ link.title }}
+                {{ link.nav-title }}
             </a>
         </li>
         {% endfor %}

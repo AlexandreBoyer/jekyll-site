@@ -8,78 +8,153 @@ layout: default
     | where_exp: "item", "item.layout == 'posts'" 
     | where_exp: "item", "item.url == '/posts/'" 
     | reverse %}
-{% assign cards = no_pagin_pages 
+{% assign items = no_pagin_pages 
     | concat: pagin_pages
     | sort: "index" %} 
-{% assign cards_size = cards | size %} 
-{% if cards_size > 5 %}
-  {% assign cards_col = "col s12 m6 offset-m0 l3 offset-l0" %} 
-{% elsif cards_size > 4 %} 
-  {% assign cards_col = "col s12 m6 offset-m0 l3 offset-l0" %} 
-{% elsif cards_size > 3 %}
-  {% assign cards_col = "col s12 m6 offset-m0 l3 offset-l0" %} 
-{% elsif cards_size > 2 %}
-  {% assign cards_col = "col s12 m6 offset-m0 l3 offset-l0" %} 
+{% assign items_size = items | size %} 
+{% if items_size > 5 %}
+  {% assign item_col = "col s12 m6 offset-m0 l2 offset-l0" %} 
+{% elsif items_size > 4 %} 
+  {% assign item_col = "col s12 m6 offset-m0 l3 offset-l0" %} 
+{% elsif items_size > 3 %}
+  {% assign item_col = "col s12 m6 offset-m0 l3 offset-l0" %} 
+{% elsif items_size > 2 %}
+  {% assign item_col = "col s12 m6 offset-m0 l4 offset-l0" %} 
 {% else %}
-  {% assign cards_col = "col s12" %} 
+  {% assign item_col = "col s12" %} 
 {% endif %}
+{% assign parallax_sizes = "1200,1000,800,600,400" | split: "," %}
+
+
+
+<!-- First parallax zone -->
 <div class="parallax-container">
-  <div class="parallax">
-    <img srcset="{{ "/assets/img/home/parallax-1-1200.jpg" | relative_url }} 1200w,
-                 {{ "/assets/img/home/parallax-1-1000.jpg" | relative_url }} 1000w,
-                 {{ "/assets/img/home/parallax-1-800.jpg" | relative_url }} 800w,
-                 {{ "/assets/img/home/parallax-1-600.jpg" | relative_url }} 600w,
-                 {{ "/assets/img/home/parallax-1-400.jpg" | relative_url }} 400w"/>
-    <!--img srcset="" src="{{ "/assets/img/home/parallax-1-1200.jpg" | relative_url }}"-->
-  </div>
+    <!-- Banner -->
+    <div class="section no-pad-bot">
+
+        <div class="container home-banner">
+            <h1 class="header center home-title">{{ page.home-title }}</h1>
+            <div class="row center">
+                <h5 class="header col s12 home-intro">
+                    {{ page.intro }}
+                </h5>
+            </div>
+        </div>
+    </div>
+    <!-- First parallax image -->
+    {% assign parallax1_srcset = "" %}
+    {% for size in parallax_sizes %}
+        {% assign url = "/assets/img/home/parallax-1-" | append: size | append: ".jpg " | relative_url %}
+        {% assign parallax1_srcset = parallax1_srcset | append: url | append: " " | append: size | append: "w,"  %}
+    {%  endfor %}
+    <div class="parallax">
+        <img srcset={{ parallax1_srcset }} />
+    </div>
+    
 </div>
 
-<div class="section home-section">
-  <div class="row container">
-    <div class="col s12">
-      <h2 class="header center-align home-title">{{ page.page-title }}</h2>
-    </div>
-    <div class="col s12">
-      <div class="card horizontal">
-        <div class="card-image valign-wrapper home-card-image">
-          <img src={{ "/assets/img/home/card.jpg" | relative_url }}>
+<!-- Menu item zone -->
+<div class="container">
+    <!-- Items zone -->
+    <div class="section">
+        <div class="row">
+            {% assign idx = 1 %}
+            {% for item in items %}
+            <div class="{{ item_col }} hoverable fixed-height">
+                <div class="home-item">
+                    <div class="">
+                        <a class="{{ "menu-icon-" | append: idx }}" href={{ item.url | relative_url }}>
+    
+                            <i class="material-icons icon large">{{ item.icon }}</i>
+                        </a>
+                        <p class="home-item-title">{{ item.nav-title }}</p>
+                        <p class="home-item-desc">
+                            {{ item.description }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% assign idx = idx| plus: 1 %}
+            {% endfor %}
         </div>
-        <div class="card-stacked">
-          <div class="card-content md-content">
-            {{ content }}
-          </div>
-          <div class="card-action bottom">
-            <h6>
-              {{page.contact-message}}
-            </h6>
-            <a class="center-align" href="#">{{ site.email }}</a>
-          </div>
-        </div>
-      </div>
     </div>
+    <!-- Feature posts zone  -->
+    {% assign featured_posts = site.posts
+        | where_exp: "post", "post.featured"  %}
+    {% assign featured_size = featured_posts | size %}
+    {% if featured_size > 0 %}
     <div class="divider"></div>
-    {% for card in cards %}
-    <div class="fixed-height-card {{ cards_col }} hoverable home-item">
-      <div class="index-card">
-        <a href={{ card.url | relative_url }}>
-          <i class="material-icons medium icon">{{ card.icon }}</i>
-        </a>
-        <p class="index-card-title">{{ card.title }}</p>
-        <p class="index-card-desc flow-text">
-          {{ card.description }}
-        </p>
-      </div>
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <h2 class="center home-post-title">
+                    {{page.publication-title}}
+                </h2>
+            </div>
+            {% for post in featured_posts limit:2 %}
+            <div class="col s12">
+                <div class="card hoverable featured-post">
+                    <div class="card-content">
+                        <div class="row">
+                            <a href={{ post.url | relative_url }}>
+                                <span class="col s12 m10 left-align featured-post-title">
+                                    {{ post.intro }}
+                                </span>
+                            </a>
+                            {% assign date_format = "%b %-d, %Y" %}
+                            <div class="col s12 m2 right-align featured-post-date">
+                                {{ post.date | date: "%d/%m/%Y" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+    {% endif %}
+</div>
+<!-- Second parallax zone -->
+<div class="parallax-container">
+    <!-- Banner -->
+    <div class="section no-pad-bot">
+
+        <div class="container home-banner">
+            <h1 class="header center home-title">{{ page.home-subtitle }}</h1>
+        </div>
+    </div>
+    <!-- First parallax image -->
+    {% assign parallax1_srcset = "" %} 
+    {% for size in parallax_sizes %} 
+        {% assign url = "/assets/img/home/parallax-2-" | append:
+    size | append: ".jpg " | relative_url %} 
+        {% assign parallax1_srcset = parallax1_srcset | append: url | append: " " |
+    append: size | append: "w," %} 
     {% endfor %}
-  </div>
+    <div class="parallax">
+        <img srcset={{ parallax1_srcset }} />
+    </div>
+
+</div>
+<!-- Footer content zone -->
+<div class="container">
+    <!-- Article zone -->
+    
+    {% if page.show-content %}
+
+    <div class="section">
+        <div class="row">
+            <div class="col s12">
+                <div class="card home-card hoverable">
+                    <div class="card-stacked">
+                        <div class="card-content md-content">
+                            {{ content }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {% endif %}
 </div>
 
-<div class="parallax-container">
-  <div class="parallax">
-      <img srcset="{{ "/assets/img/home/parallax-2-1200.jpg" | relative_url }} 1200w,
-      {{ "/assets/img/home/parallax-2-1000.jpg" | relative_url }} 1000w,
-      {{ "/assets/img/home/parallax-2-800.jpg" | relative_url }} 800w,
-      {{ "/assets/img/home/parallax-2-600.jpg" | relative_url }} 600w,
-      {{ "/assets/img/home/parallax-2-400.jpg" | relative_url }} 400w"/>
-  </div>
-</div>

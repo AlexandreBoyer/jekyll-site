@@ -1,5 +1,6 @@
 ---
 layout: post
+featured: true
 title: Edition - Syntaxe markdown 
 date: 2017-06-01T00:00:00+00:00
 categories: sample tutorial

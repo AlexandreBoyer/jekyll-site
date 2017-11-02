@@ -4,7 +4,8 @@ nav-link: true
 home-link: true
 index: 40
 permalink: /albums/
-title: Albums
+title: "Albums | Site"
+nav-title: Albums
 description: | 
     Ici la publication des médias
 icon: camera_roll

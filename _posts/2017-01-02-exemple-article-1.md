@@ -1,5 +1,6 @@
 ---
 layout: post
+featured: false
 title: Exemple d'article 1
 date: 2017-01-02T00:00:00+00:00
 categories: sample test

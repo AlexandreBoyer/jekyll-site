@@ -163,8 +163,8 @@ class Sample
         end
     end
 
-    def genImage(w = 1280, h = 800, msg = "message", out = "sample.jpg")
-        puts "gen image in "+out
+    def genImage(w = 1280, h = 800, msg = "message", out = "sample.jpg", verbose = true, src = nil)
+        puts "gen image in " + out
         size = w.to_s + "x" + h.to_s
         col1 = "%06x" % (rand * 0xffffff)
         col2 = "%06x" % (rand * 0xffffff)
@@ -172,26 +172,26 @@ class Sample
         #puts imgSpec
         sample = ImageList.new(imgSpec) { self.size =  size}
         #sample = ImageList.new("netscape:") { self.size =  size}
+        if verbose
+            text = Draw.new
+            text.font_family = 'tahoma'
 
-        text = Draw.new
-        text.font_family = 'tahoma'
-
-        text.pointsize = w / 17
-        text.gravity = CenterGravity
-        text.annotate(sample, 0,0,0,-w/8, "/assets/"+out) {
-            self.fill = 'white'
-        }
-        text.pointsize = w / 17
-        #text.gravity = NorthGravity
-        text.annotate(sample, 0,0,0,w/8, "Taille: "+size) {
-            self.fill = 'white'
-        }
-        text.pointsize = w / 10
-        #text.gravity = CenterGravity
-        text.annotate(sample, 0,0,0,0, msg) {
-            self.fill = 'white'
-        }
-        
+            text.pointsize = w / 17
+            text.gravity = CenterGravity
+            text.annotate(sample, 0,0,0,-w/8, "/assets/"+out) {
+                self.fill = 'white'
+            }
+            text.pointsize = w / 17
+            #text.gravity = NorthGravity
+            text.annotate(sample, 0,0,0,w/8, "Taille: "+size) {
+                self.fill = 'white'
+            }
+            text.pointsize = w / 10
+            #text.gravity = CenterGravity
+            text.annotate(sample, 0,0,0,0, msg) {
+                self.fill = 'white'
+            }
+        end
         sample.write(out) {
             self.quality = 75
             self.compression = JPEG2000Compression
@@ -199,8 +199,8 @@ class Sample
     end
 
     def genHomeImages()
-        genImage(1200, 1000, 'Image présentation 1', 'img/home/parallax-1-1200.jpg')
-        genImage(1200, 1000, 'Image présentation 2', 'img/home/parallax-2-1200.jpg')
+        genImage(1200, 1200, 'Image présentation 1', 'img/home/parallax-1-1200.jpg')
+        genImage(1200, 1200, 'Image présentation 2', 'img/home/parallax-2-1200.jpg')
         genImage(1000, 920, 'Image présentation 1', 'img/home/parallax-1-1000.jpg')
         genImage(1000, 920, 'Image présentation 2', 'img/home/parallax-2-1000.jpg')
         genImage(800, 640, 'Image présentation 1', 'img/home/parallax-1-800.jpg')
@@ -210,8 +210,6 @@ class Sample
         genImage(400, 360, 'Image présentation 1', 'img/home/parallax-1-400.jpg')
         genImage(400, 360, 'Image présentation 2', 'img/home/parallax-2-400.jpg')
 
-        genImage(250, 300, 'Image carte', 'img/home/card.jpg')
-        
         genImage(250, 300, 'Image carte', 'img/home/card.jpg')
     end
 

@@ -31,6 +31,8 @@
         function setMDContent() {
             $('.md-content').find('img').addClass("responsive-img");
             $('.md-content').find('p').addClass("flow-text");
+            $('.md-content').find('table').addClass("bordered");
+            $('.md-content').find('table').addClass("");
         }
         $(document).ready(function () {
             console.log("document loaded");
@@ -39,12 +41,6 @@
             });
             $(".dropdown-button").dropdown();
             $('.parallax').parallax();
-            $('.home-card').matchHeight({
-                byRow: true,
-                property: 'height',
-                target: null,
-                remove: true
-            });
             $('.fixed-height-card').matchHeight({
                 byRow: true,
                 property: 'height',
@@ -57,6 +53,13 @@
                 target: null,
                 remove: false
             });
+            $('.home-item-small-row').matchHeight({
+                byRow: true,
+                property: 'height',
+                target: null,
+                remove: false
+            });
+            
             $('.scrollspy').scrollSpy();
             
             $('.paginator-fixed').pushpin({

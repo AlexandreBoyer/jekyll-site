@@ -5,7 +5,8 @@ layout: tasks
 permalink: /tasks/
 index: 20
 #Modifiable
-title: Activités
+title: "Activités  | Site"
+nav-title: Activités
 description: | 
     Contenu publications de niveau 2
 icon: toc

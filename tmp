@@ -1,31 +1,76 @@
-    <!--
-    {% for sub_item in item.subcategories %}
-    <li><a href="{{ sub_item.subhref }}">{{ sub_item.subtitle }}</a></li>
-    {% endfor %}
-    -->
+<div class="parallax-container">
+  <div class="parallax">
+    <img srcset="{{ "/assets/img/home/parallax-1-1200.jpg" | relative_url }} 1200w,
+                 {{ "/assets/img/home/parallax-1-1000.jpg" | relative_url }} 1000w,
+                 {{ "/assets/img/home/parallax-1-800.jpg" | relative_url }} 800w,
+                 {{ "/assets/img/home/parallax-1-600.jpg" | relative_url }} 600w,
+                 {{ "/assets/img/home/parallax-1-400.jpg" | relative_url }} 400w"/>
+    <!--img srcset="" src="{{ "/assets/img/home/parallax-1-1200.jpg" | relative_url }}"-->
+  </div>
+</div>
 
-<div class="section blue-grey lighten-5">
+<div class="section home-section">
   <div class="row container">
-    <!--/div class="col s12">
-      
-      <div class="card blue-grey darken-1">
-          <span class="card-title">{{ page.title }}</span>
-          <p class="grey-text text-darken-3 lighten-3">{{ page.subTitle }}</p>
-      </div>
-    </div-->
-    
+    <div class="col s12">
+      <h2 class="header center-align home-title">{{ page.page-title}}</h2>
+    </div>
+
     {% for card in cards %}
-    <!--div class="{{ "col s" | append: card_col}}">
-        <div class="index-card">
-          <a href="{{ card.href | relative_url }}">
-            <i class="material-icons medium indigo-text">{{ card.icon }}</i>
-          </a>
-          <p class="index-card-title">{{ card.title }}</p>
-          <p class="index-card-desc">
-              {{ card.desc }}
-          </p>
+    <div class="{{ cards_col }} hoverable fixed-height">
+      <div class="home-item">
+        <div class="hide-on-med-and-down">
+            <a href={{ card.url | relative_url }}>
+                
+                <i class="material-icons icon large">{{ card.icon }}</i>
+            </a>
+            <p class="home-item-title">{{ card.title }}</p>
         </div>
-    </div-->
+        <div class="hide-on-large-only center">
+          <div class="col s6 right-align home-item-small-row">
+              <a href={{ card.url | relative_url }}>
+                  <i class="material-icons icon medium">{{ card.icon }}</i>
+                </a> 
+          </div>
+          <div class="col s6 left-align home-item-small-row">
+
+            <span class="">{{ card.title }}</span>
+          </div>
+          <div class="col s12">
+              <p class="home-item-desc">
+                  {{ card.description }}
+                </p>
+          </div>
+        </div>
+      </div>
+    </div>
     {% endfor %}
+    <div class="col s12 hide-on-small-only">
+        <div class="card horizontal home-card hoverable">
+          <div class="card-image valign-wrapper home-card-image">
+            <img src={{ "/assets/img/home/card.jpg" | relative_url }}>
+          </div>
+          <div class="card-stacked">
+            <div class="card-content md-content">
+              {{ content }}
+            </div>
+            <div class="card-action bottom">
+              <h6>
+                {{page.contact-message}}
+              </h6>
+              <a class="center-align" href="#">{{ site.email }}</a>
+            </div>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div class="parallax-container">
+  <div class="parallax">
+      <img srcset="{{ "/assets/img/home/parallax-2-1200.jpg" | relative_url }} 1200w,
+      {{ "/assets/img/home/parallax-2-1000.jpg" | relative_url }} 1000w,
+      {{ "/assets/img/home/parallax-2-800.jpg" | relative_url }} 800w,
+      {{ "/assets/img/home/parallax-2-600.jpg" | relative_url }} 600w,
+      {{ "/assets/img/home/parallax-2-400.jpg" | relative_url }} 400w"/>
   </div>
 </div>

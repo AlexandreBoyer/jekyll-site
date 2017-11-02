@@ -8,8 +8,8 @@ permalink: /tasks/
         {% for task in site.tasks %}
         {% assign paths = task.url | split: "/" %}
         {% assign image_path = "assets/img/tasks/" | append: paths.last | append: "/thumb.jpg" %}
-        <div class="col s12 m6 l4 xl3">
-            <div class="card hoverable fixed-height">
+        <div class="col s12 m6 l4 xl3 fixed-height">
+            <div class="card hoverable">
                 <div class="card-image waves-effect waves-block waves-light">
                     <img class="activator" src={{ image_path | relative_url }}>
                 </div>
@@ -21,7 +21,6 @@ permalink: /tasks/
                         </i>
                     </span>
                     <p>
-                        
                         <a href={{ task.url | relative_url }}>
                             {{ page.link-text }}
                         </a>
