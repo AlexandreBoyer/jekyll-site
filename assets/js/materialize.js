@@ -2633,6 +2633,7 @@ if (Vel) {
       //$this.children("img").one("load", function () {
       $this.find("img").one("load", function () {
         updateParallax(true);
+        console.log("update parallax");
       }).each(function () {
         if (this.complete) $(this).trigger("load");
       });

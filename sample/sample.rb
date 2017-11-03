@@ -187,17 +187,17 @@ class Sample
             text.pointsize = w / 17 *  dpiFactor
             text.gravity = CenterGravity
             text.annotate(sample, 0,0,0, -w / 8 * dpiFactor, "/assets/"+out) {
-                self.fill = 'white'
+                self.fill = 'black'
             }
             text.pointsize = w / 17  * dpiFactor
             #text.gravity = NorthGravity
             text.annotate(sample, 0,0,0, w / 8 * dpiFactor, "Taille: "+size) {
-                self.fill = 'white'
+                self.fill = 'black'
             }
             text.pointsize = w / 10  * dpiFactor
             #text.gravity = CenterGravity
             text.annotate(sample, 0,0,0,0, msg) {
-                self.fill = 'white'
+                self.fill = 'black'
             }
         end
         sample.write(out) {

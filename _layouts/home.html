@@ -44,6 +44,7 @@ layout: default
     
     <div class="parallax">
         <picture>
+
             {% assign img = "parallax-1-" %}
             {% for size in parallax_sizes %}
                 {% assign srcset = "" %}
@@ -60,11 +61,30 @@ layout: default
                         | append: url 
                         | append: " " 
                         | append: factor
-                        | remove: "\"" %}
+                        | remove: '"' %}
                 {%  endfor %}
                 <source media="{{ "(min-width: " | append: size | append: "px)"}}" srcset="{{ srcset }}" />    
             {%  endfor %}
-            <img src={{ "/assets/img/home/parallax-2-800-100.jpg" | relative_url }}/>
+
+                {% assign srcset = "" %}
+                {% assign size = 400 %}
+                {% for dpi in parallax_dpi %}
+                    {% assign factor = forloop.index0 | plus: 1 | append: "x," %}
+                    {% assign url = "/assets/img/home/" 
+                        | append: img 
+                        | append: size
+                        | append: "-" 
+                        | append: dpi 
+                        | append: ".jpg" 
+                        | relative_url %}
+                    {% assign srcset = srcset 
+                        | append: url 
+                        | append: " " 
+                        | append: factor
+                        | remove: '"' %}
+                {%  endfor %}
+                <source media="{{ "(max-width: " | append: size | append: "px)"}}" srcset="{{ srcset }}" /> 
+            <img src={{"/assets/img/home/parallax-1.jpg" | relative_url }}/>
         </picture>
     </div>
 </div>
@@ -163,11 +183,31 @@ layout: default
                         | append: url 
                         | append: " " 
                         | append: factor
-                        | remove: "\"" %}
+                        | remove: '"' %}
                 {%  endfor %}
-                <source media="{{ "(min-width: " | append: size | append: "px)"}}" srcset="{{ srcset }}" />    
+                <source media="{{ "(min-width: " | append: size | append: "px)"}}" srcset="{{ srcset }}">
             {%  endfor %}
-            <img src={{ "/assets/img/home/parallax-2-800-100.jpg" | relative_url }}/>
+
+            <!--      -->
+                {% assign srcset = "" %}
+                {% assign size = 400 %}
+                {% for dpi in parallax_dpi %}
+                    {% assign factor = forloop.index0 | plus: 1 | append: "x," %}
+                    {% assign url = "/assets/img/home/" 
+                        | append: img 
+                        | append: size
+                        | append: "-" 
+                        | append: dpi 
+                        | append: ".jpg" 
+                        | relative_url %}
+                    {% assign srcset = srcset 
+                        | append: url 
+                        | append: " " 
+                        | append: factor
+                        | remove: '"' %}
+                {%  endfor %}
+                <source media="{{ "(max-width: " | append: size | append: "px)"}}" srcset="{{ srcset }}" /> 
+            <img src=""/>
         </picture>
     </div>
 
