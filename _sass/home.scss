@@ -112,7 +112,7 @@ $home-background: $theme_background;
 
 .parallax-container {
   @media #{$small-and-down} {
-    height: 400px;
+    height: 300px;
   }
   @media #{$medium-and-up} {
     // styles for medium screens and larger
