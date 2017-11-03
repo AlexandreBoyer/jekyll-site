@@ -28,41 +28,7 @@ main {
 //MENU
 
 
-.nav-path-main {
-  font-weight: 500 !important;
-  font-size: 1.7rem;
-}
 
-.nav-path {
-  font-weight: 400 !important;
-  font-size: 1.5rem !important;
-}
-
-.nav-link {
-  padding-left: 1rem;
-  font-weight: 400 !important;
-  font-size: 1.4rem !important; 
-}
-
-.nav-side-item {
-
-}
-
-.nav-dropdown-content {
-
-    @extend .dropdown-content;
-    min-width: 13rem;
-}
-
-.nav-dropdown-content li>a {
-  color: $icon_color !important;
-}
-
-.nav-dropdown-head {
-    border-bottom-width: 1px;
-    border-bottom-color: $primary-color-light;
-    border-bottom-style: solid;
-}
 
 .navigation {
   //@extend .blue-grey, .darken-3;  
