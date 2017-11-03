@@ -163,30 +163,38 @@ class Sample
         end
     end
 
-    def genImage(w = 1280, h = 800, msg = "message", out = "sample.jpg", verbose = true, src = nil)
-        puts "gen image in " + out
+    def genImage(w = 1280, h = 800, dpi=72.0, out = "sample.jpg", verbose = true,  msg = "message", src = nil)
+        puts "genImage to " + out
         size = w.to_s + "x" + h.to_s
         col1 = "%06x" % (rand * 0xffffff)
         col2 = "%06x" % (rand * 0xffffff)
-        imgSpec = "gradient:#" + col1 + "-#" + col2
-        #puts imgSpec
-        sample = ImageList.new(imgSpec) { self.size =  size}
-        #sample = ImageList.new("netscape:") { self.size =  size}
+        imgSpec = "plasma:#" + col1 + "-#" + col2
+        #Load immage
+        sample = nil
+        if src == nil
+            sample = ImageList.new(imgSpec) { self.size =  size}
+        else
+            sample = ImageList.new(src)
+        end
+        #resample at target dpi
+        sample = sample.resample(dpi);
+        #verbosity
+        dpiFactor = dpi / 100
         if verbose
             text = Draw.new
             text.font_family = 'tahoma'
 
-            text.pointsize = w / 17
+            text.pointsize = w / 17 *  dpiFactor
             text.gravity = CenterGravity
-            text.annotate(sample, 0,0,0,-w/8, "/assets/"+out) {
+            text.annotate(sample, 0,0,0, -w / 8 * dpiFactor, "/assets/"+out) {
                 self.fill = 'white'
             }
-            text.pointsize = w / 17
+            text.pointsize = w / 17  * dpiFactor
             #text.gravity = NorthGravity
-            text.annotate(sample, 0,0,0,w/8, "Taille: "+size) {
+            text.annotate(sample, 0,0,0, w / 8 * dpiFactor, "Taille: "+size) {
                 self.fill = 'white'
             }
-            text.pointsize = w / 10
+            text.pointsize = w / 10  * dpiFactor
             #text.gravity = CenterGravity
             text.annotate(sample, 0,0,0,0, msg) {
                 self.fill = 'white'
@@ -198,19 +206,20 @@ class Sample
         }
     end
 
-    def genHomeImages()
-        genImage(1200, 1200, 'Image présentation 1', 'img/home/parallax-1-1200.jpg')
-        genImage(1200, 1200, 'Image présentation 2', 'img/home/parallax-2-1200.jpg')
-        genImage(1000, 920, 'Image présentation 1', 'img/home/parallax-1-1000.jpg')
-        genImage(1000, 920, 'Image présentation 2', 'img/home/parallax-2-1000.jpg')
-        genImage(800, 640, 'Image présentation 1', 'img/home/parallax-1-800.jpg')
-        genImage(800, 640, 'Image présentation 2', 'img/home/parallax-2-800.jpg')
-        genImage(600, 540, 'Image présentation 1', 'img/home/parallax-1-600.jpg')
-        genImage(600, 540, 'Image présentation 2', 'img/home/parallax-2-600.jpg')
-        genImage(400, 360, 'Image présentation 1', 'img/home/parallax-1-400.jpg')
-        genImage(400, 360, 'Image présentation 2', 'img/home/parallax-2-400.jpg')
+    def genImageSet(sizes, dpis, dir = ".", name = sample, verbose=false, msg = nil, src = nil)
+        sizes.each do |size|
+            dpis.each do |dpi|
+                outFile = dir + "/" + name + "-" + size[0].to_s + "-" + dpi.round.to_s + ".jpg"
+                genImage(size[0], size[1], dpi, outFile, verbose, msg, src)
+            end
+        end
+    end
 
-        genImage(250, 300, 'Image carte', 'img/home/card.jpg')
+    def genHomeImages()
+        sizes = [[1200, 1000], [1000, 900], [800, 720], [600, 540], [400, 360]]
+        dpis = [100.0, 200.0, 300.0]
+        genImageSet(sizes, dpis, "img/home", "parallax-1", true, "Image 1")
+        genImageSet(sizes, dpis, "img/home", "parallax-2", true, "Image 2")
     end
 
 end

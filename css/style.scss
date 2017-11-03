@@ -3,12 +3,14 @@
 ---
 
 // Imports
-
 @import "theme";
 @import "materialize";
+@import "menu";
+@import "home";
+
+$page_color: #ffdbdb;
 
 $icon_color: $primary-color;
-$home-background: #e1e4e7;
 
 .debug {
   display: none
@@ -25,24 +27,6 @@ main {
 }
 //MENU
 
-.menu-icon-1 {
-  color: $theme_icon1 !important;
-}
-.menu-icon-2 {
-  color: $theme_icon2 !important;
-}
-.menu-icon-3 {
-  color: $theme_icon3 !important;
-}
-.menu-icon-4 {
-  color: $theme_icon4 !important;
-}
-.menu-icon-5 {
-  color: $theme_icon5 !important;
-}
-.menu-icon-6 {
-  color: $theme_icon6 !important;
-}
 
 .nav-path-main {
   font-weight: 500 !important;
@@ -80,121 +64,6 @@ main {
     border-bottom-style: solid;
 }
 
-/*
-Home page
-*/
-
-
-.home-section {
-  background-color: $home-background;
-}
-.home-section .row {
-  width: 85%;
-}
-
-.home-title {
-    color: white !important;
-    //font-family: 'Lora', serif;
-    font-weight: 500 !important;
-    font-size: 5rem !important;
-    text-shadow: 2px 2px 8px #000000;
-}
-.home-intro {
-  margin: 2rem;
-  color: white !important;
-  //background-color:#ffffff50;
-  text-shadow: 1px 1px 3px #000000;
-  font-size: 3rem;
-  font-weight: 400 !important;
-}
-
-.home-post-title {
-    color: $primary-color !important;
-    font-size: 2rem;
-}
-
-.featured-post {
-
-}
-
-.featured-post-title {
-    color: black;
-    font-size: 1.5rem;
-}
-.featured-post-date {
-  color: gray;
-  font-size: 1.3rem;
-}
-
-.home-card {
-    //background-color: $home-background;
-    @media #{$medium-and-up} {
-      // styles for medium screens and larger
-      text-align: center;
-    }
-    
-    margin-top: 20px;
-}
-
-.home-card-title {
-  font-size: 1.7rem;
-  font-weight: 500;
-  margin-top: 5px;
-  margin-bottom: 0
-}
-
-.home-card-image {
-  @media #{$medium-and-down} {
-    display: none
-  }
-}
-
-.home-item {
-  margin: 1rem;
-  @extend .center;
-  //background-color: $home-background;
-}
-.home-item-small > * {
-  vertical-align: middle;
-}
-
-.home-item-desc {
-  margin: 0rem;
-  font-size: 1.3rem !important;
-  font-weight: 400 !important;
-}
-.home-item-title {
-  @extend .center;
-  margin: 0.5rem;
-  font-size: 2.0rem !important;
-  font-weight: 500 !important;
-  color: darken($icon_color, 10%) !important;
-}
-
-
-
-.parallax-container {
-  @media #{$small-and-down} {
-    height: 400px;
-  }
-  @media #{$medium-and-up} {
-    // styles for medium screens and larger
-     height: 400px;
-  }
-  @media #{$large-and-up} {
-    // styles for large screens and up
-    height: 500px;
-  }
-  @media #{$extra-large-and-up} {
-    // styles for extra large screens and up
-    height: 600px;
-  }
-}
-
-
-
-
-
 .navigation {
   //@extend .blue-grey, .darken-3;  
 }
@@ -224,7 +93,6 @@ Home page
     display: none
   }
 }
-
 .video-gallery-thumb{
   width: 11rem;
 }
