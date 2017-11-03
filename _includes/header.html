@@ -81,27 +81,34 @@
     <ul class="side-nav" id="side-nav-menu">
         <li>
             <a class="nav-dropdown-item nav-dropdown-head" href={{ pages[0].url | relative_url }}>
-                <i class="material-icons small item-icon">
+                <i class="material-icons small menu-icon-0">
                     {{ pages[0].icon }}
                 </i>
-                {{ pages[0].nav-title }}
+                <span>
+                    {{ pages[0].nav-title }}
+                </span>
+                
             </a>
         </li>      
         {% for link in links %}
+        {% assign idx = forloop.index0 | plus: 1 %}
         <li>
-            <a class="nav-dropdown-item" href={{ link.url | relative_url }}>
-                <i class="material-icons small item-icon">
+            <a class="nav-dropdown-item " href={{ link.url | relative_url }}>
+                <i class="material-icons small {{ "menu-icon-" | append: idx }}">
                     {{ link.icon }}
                 </i>
-                {{ link.nav-title }}
+                <span>
+                    {{ link.nav-title }}
+                </span>
+                
             </a>
         </li>
         {% endfor %}
     </ul>
     <ul class="nav-dropdown-content" id="nav-dropdown">
         <li>
-            <a class="nav-dropdown-item nav-dropdown-head menu-icon-0" href={{ pages[0].url | relative_url }}>
-                <i class="material-icons small">
+            <a class="nav-dropdown-item nav-dropdown-head" href={{ pages[0].url | relative_url }}>
+                <i class="material-icons small menu-icon-0">
                     {{ pages[0].icon }}
                 </i>
                 <span class="">
@@ -112,8 +119,8 @@
         {% for link in links %}
         {% assign idx = forloop.index0 | plus: 1 %}
         <li>
-            <a class="nav-dropdown-item {{ "menu-icon-" | append: idx }}" href={{ link.url | relative_url }}>
-                <i class="material-icons small">{{ link.icon }}</i>
+            <a class="nav-dropdown-item" href={{ link.url | relative_url }}>
+                <i class="material-icons small {{ "menu-icon-" | append: idx }}">{{ link.icon }}</i>
                 <span>
                     {{ link.nav-title }}    
                 </span>
