@@ -4,6 +4,7 @@ nav-link: true
 home-link: true
 index: 5
 permalink: /albums/
+theme: true
 title: "Albums | Site"
 nav-title: Albums
 description: | 

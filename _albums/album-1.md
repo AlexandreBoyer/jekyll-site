@@ -1,6 +1,7 @@
 ---
 layout: album
 date: 2017-01-02T00:00:00+00:00
+theme: true
 title: Album 1
 intro: Lorem ipsum dolor sit amet, consectetuer
 thumb: 1.jpg
