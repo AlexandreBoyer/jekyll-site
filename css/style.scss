@@ -5,9 +5,10 @@
 // Imports
 @import "colors";
 
-$theme_primary: $theme_0;
-$theme_secondary: #fdecec;
-$theme_background: white;
+$theme_primary: $theme_0_p;
+$theme_secondary: $theme_0_s;
+$theme_background: $theme_0_b;
+$theme_md: $theme_0_md;
 
 @import "theme";
 @import "materialize";
