@@ -216,7 +216,7 @@ class Sample
     end
 
     def genHomeImages()
-        sizes = [[1200, 1000], [1000, 900], [800, 720], [600, 540], [400, 360]]
+        sizes = [[1200, 1000], [1000, 1000], [800, 800], [600, 800], [400, 600]]
         dpis = [100.0, 200.0, 300.0]
         genImageSet(sizes, dpis, "img/home", "parallax-1", true, "Image 1")
         genImageSet(sizes, dpis, "img/home", "parallax-2", true, "Image 2")

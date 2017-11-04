@@ -1,9 +1,11 @@
 ---
-nav-link: true
-home-link: true
 layout: tasks
 permalink: /tasks/
-index: 20
+index: 3
+theme: true
+nav-link: true
+home-link: true
+
 #Modifiable
 title: "Activités  | Site"
 nav-title: Activités

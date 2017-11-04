@@ -1,10 +1,13 @@
 ---
 layout: story
-index: 30
-title: "Narration | Site"
-nav-title: Narration
+index: 4
+theme: true
 nav-link: true
 home-link: true
+
+title: "Narration | Site"
+nav-title: Narration
+
 description: |
     Contenu publications de niveau 3
     Ici du contenu informatif fixe

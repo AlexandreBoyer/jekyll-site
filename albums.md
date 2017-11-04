@@ -2,7 +2,7 @@
 layout: albums
 nav-link: true
 home-link: true
-index: 40
+index: 5
 permalink: /albums/
 title: "Albums | Site"
 nav-title: Albums

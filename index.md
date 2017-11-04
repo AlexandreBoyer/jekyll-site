@@ -8,7 +8,7 @@ nav-link: true
 home-link: false
 show-content: true
 icon: home
-home-title: Titre principal
+home-title: La forge
 intro: | 
     Message d'introduction,
     c'est le premier message que lira le visiteur 

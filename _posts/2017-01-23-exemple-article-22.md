@@ -6,7 +6,7 @@ categories: sample test
 intro: Introduction à l'article exemple 22
 ---
 
-# Lorem ipsum dolor sit
+# Article 22
 ![](/jekyll-site/assets/img/posts/sample/sample.jpg)
 
 >Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Nam cursus. Morbi ut mi. Nullam enim leo, egestas id, condimentum at, laoreet mattis, massa. Sed eleifend nonummy diam. Praesent mauris ante, elementum et, bibendum at, posuere sit amet, nibh. Duis tincidunt
