@@ -8,7 +8,7 @@ nav-link: true
 home-link: false
 show-content: true
 icon: home
-home-title: La forge
+home-title: Scribae
 intro: | 
     Message d'introduction,
     c'est le premier message que lira le visiteur 
